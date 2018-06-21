@@ -10,8 +10,13 @@ build-prod: bin/python
 	bin/pip install -I -r requirements.txt
 	bin/buildout
 
-bin/python:
-	virtualenv-2.7 .
+build: build-dev
+
+bin/pip:
+	if [ -f /usr/bin/virtualenv-2.7 ] ; then virtualenv-2.7 .;else virtualenv -p python2.7 .;fi
 
 run: bin/instance
 	bin/instance fg
+
+docker-image:
+	docker build --pull -t docker-staging.imio.be/library/mutual:latest .

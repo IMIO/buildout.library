@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  zeo:
+    build:
+      context: .
+    image: imiolibrary
+    volumes:
+      - ./var/blobstorage:/home/imio/plone/var/blobstorage
+      - ./var/filestorage:/home/imio/plone/var/filestorage
+    command: zeoserver fg
+  instance:
+    image: imiolibrary
+    ports:
+      - 8080:8080
+    links:
+      - zeo:db
+    command: fg
