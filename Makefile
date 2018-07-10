@@ -1,11 +1,11 @@
 #!/usr/bin/make
 
-build-dev: bin/python
+build-dev: bin/pip
 	ln -fs dev.cfg buildout.cfg
 	bin/pip install -I -r requirements.txt
 	bin/buildout
 
-build-prod: bin/python
+build-prod: bin/pip
 	ln -fs prod.cfg buildout.cfg
 	bin/pip install -I -r requirements.txt
 	bin/buildout
@@ -20,3 +20,6 @@ run: bin/instance
 
 docker-image:
 	docker build --pull -t docker-staging.imio.be/library/mutual:latest .
+
+cleanall:
+	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
