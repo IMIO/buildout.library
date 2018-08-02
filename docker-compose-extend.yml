@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  backup:
+    extends:
+      file: docker-compose.yml
+      service: instance
+    command: bin/backup
+    volumes:
+    - ./backups:/home/imio/plone/backups
+  restore:
+    extends:
+      file: docker-compose.yml
+      service: instance
+    command: bin/restore --no-prompt
+    volumes:
+    - ./backups:/home/imio/plone/backups
+  pack:
+    extends:
+      file: docker-compose.yml
+      service: instance
+    command: bin/zeopack
