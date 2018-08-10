@@ -24,6 +24,6 @@ ENV ZEO_PORT 8100
 ENV HOSTNAME_HOST local
 ENV PROJECT_ID bibliotheca
 EXPOSE 8080
-HEALTHCHECK --start-period=30s --timeout=10s --interval=1m \
-  CMD curl --fail http://127.0.0.1:8080/ || exit 1`
+HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
+  CMD curl --fail http://127.0.0.1:8080/ || exit 1
 ENTRYPOINT ["/docker-entrypoint.sh"]
