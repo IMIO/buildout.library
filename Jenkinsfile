@@ -54,6 +54,8 @@ pipeline {
                 sh "docker rmi docker-prod.imio.be/library/mutual:$BUILD_ID"
                 sh "mco shell run 'docker pull docker-prod.imio.be/library/mutual:$BUILD_ID' -I /^bibliotheca.imio.be/"
                 sh "mco shell run 'systemctl restart bibliotheca.service' -I /^bibliotheca.imio.be/"
+                sh "mco shell run 'systemctl restart couvin.service' -I /^bibliotheca.imio.be/"
+                sh "mco shell run 'systemctl restart sambreville.service' -I /^bibliotheca.imio.be/"
             }
         }
     }
