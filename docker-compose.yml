@@ -15,3 +15,9 @@ services:
     links:
       - zeo:db
     command: fg
+    labels:
+        - "traefik.frontend.rule=Host:localhost; AddPrefix: /VirtualHostBase/http/localhost/plone/VirtualHostRoot"
+networks:
+  default:
+    external:
+      name: proxy
