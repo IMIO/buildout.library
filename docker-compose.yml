@@ -8,6 +8,8 @@ services:
       - ./var/blobstorage:/home/imio/plone/var/blobstorage
       - ./var/filestorage:/home/imio/plone/var/filestorage
     command: zeoserver fg
+    healthcheck:
+      disable: true
   instance:
     image: imiolibrary
     ports:
