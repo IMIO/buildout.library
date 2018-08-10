@@ -11,12 +11,21 @@ services:
   instance:
     image: imiolibrary
     ports:
-      - 8080:8080
+      - 8080-8082:8080
     links:
       - zeo:db
     command: fg
     labels:
         - "traefik.frontend.rule=Host:localhost; AddPrefix: /VirtualHostBase/http/localhost/plone/VirtualHostRoot"
+  reverseproxy:
+    image: traefik
+    command: --api --docker
+    ports:
+      - "80:80"
+      - "8000:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
 networks:
   default:
     external:
