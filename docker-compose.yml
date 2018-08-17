@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 services:
   zeo:
     build:
@@ -8,15 +8,22 @@ services:
       - ./var/blobstorage:/home/imio/plone/var/blobstorage
       - ./var/filestorage:/home/imio/plone/var/filestorage
     command: zeoserver fg
+    expose:
+      - 8100
     healthcheck:
-      disable: true
+      # test: ["CMD-SHELL", "nc", "-z", "w5", "127.0.0.1", "8100", "||", "exit", "1"]
+      test: ["CMD", "nc", "-z", "w5", "127.0.0.1", "8100"]
   instance:
     image: imiolibrary
-    ports:
-      - 8080-8082:8080
+    expose:
+      - 8080
     links:
       - zeo:db
+    depends_on:
+      - reverseproxy
     command: fg
+    deploy:
+      replicas: 2
     labels:
         - "traefik.frontend.rule=Host:localhost; AddPrefix: /VirtualHostBase/http/localhost/plone/VirtualHostRoot"
   reverseproxy:
@@ -29,6 +36,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
-  default:
-    external:
-      name: proxy
+  proxy:
