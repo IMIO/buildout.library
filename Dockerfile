@@ -23,4 +23,4 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
 WORKDIR /home/imio/plone
 EXPOSE 8081
 HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
-  CMD curl --fail http://127.0.0.1:8080/ || exit 1
+  CMD curl --fail http://127.0.0.1:8081/ || exit 1
