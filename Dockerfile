@@ -21,6 +21,6 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
   && apt-get autoremove -y \
   && apt-get clean
 WORKDIR /home/imio/plone
-EXPOSE 8080
+EXPOSE 8081
 HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
   CMD curl --fail http://127.0.0.1:8080/ || exit 1
