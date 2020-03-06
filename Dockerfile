@@ -1,26 +1,78 @@
-FROM docker-staging.imio.be/library/cache:latest
-ENV PATH="/home/imio/.local/bin:${PATH}" \
-    ZEO_HOST=db \
-    ZEO_PORT=8100 \
-    HOSTNAME_HOST=local \
-    PROJECT_ID=bibliotheca \
-    HOME=/home/imio
-RUN mkdir /home/imio/plone
-COPY Makefile *.cfg *.txt /home/imio/plone/
-RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev" \
-  && runDeps="poppler-utils wv rsync lynx netcat libxml2 libxslt1.1 libjpeg62 libtiff5 libopenjp2-7" \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends $buildDeps \
-  && cd /home/imio/plone \
-  && pip install -I -r requirements.txt \
-  && ln -fs prod.cfg buildout.cfg \
-  && buildout \
-  && chown imio:imio -R /home/imio/plone/ \
-  && apt-get remove -y $buildDeps \
-  && apt-get install -y $runDeps \
-  && apt-get autoremove -y \
-  && apt-get clean
-WORKDIR /home/imio/plone
-EXPOSE 8081
-HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
-  CMD curl --fail http://127.0.0.1:8081/ || exit 1
+FROM docker-staging.imio.be/base:alpinepy3 as builder
+ENV PIP=9.0.3 \
+  ZC_BUILDOUT=2.13.2 \
+  SETUPTOOLS=41.0.1 \
+  WHEEL=0.31.1 \
+  PLONE_MAJOR=5.2 \
+  PLONE_VERSION=5.2.1
+
+RUN apk add --update --no-cache --virtual .build-deps \
+  build-base \
+  gcc \
+  git \
+  libc-dev \
+  libffi-dev \
+  libjpeg-turbo-dev \
+  libpng-dev \
+  libwebp-dev \
+  libxml2-dev \
+  libxslt-dev \
+  openssl-dev \
+  pcre-dev \
+  wget \
+  zlib-dev \
+  && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
+WORKDIR /plone
+RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
+COPY --chown=imio eggs /plone/eggs/
+COPY --chown=imio *.cfg /plone/
+COPY --chown=imio scripts /plone/scripts
+RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
+
+
+FROM docker-staging.imio.be/base:alpinepy3
+
+ENV PIP=9.0.3 \
+  ZC_BUILDOUT=2.13.2 \
+  SETUPTOOLS=41.0.1 \
+  WHEEL=0.31.1 \
+  PLONE_VERSION=5.2.1 \
+  TZ=Europe/Brussel \
+  ZEO_HOST=zeo \
+  ZEO_PORT=8100 \
+  HOSTNAME_HOST=local \
+  PROJECT_ID=library
+
+RUN mkdir /data && chown imio:imio -R /data
+VOLUME /data/blobstorage
+VOLUME /data/filestorage
+WORKDIR /plone
+
+RUN apk add --no-cache --virtual .run-deps \
+  bash \
+  rsync \
+  libxml2 \
+  libxslt \
+  libpng \
+  libjpeg-turbo
+
+LABEL plone=$PLONE_VERSION \
+  os="alpine" \
+  os.version="3.10" \
+  name="Plone 5.2.1" \
+  description="Plone image for iA.Bibliotheca" \
+  maintainer="Imio"
+
+COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
+COPY --chown=imio --from=builder /plone .
+RUN chown imio:imio /plone
+
+COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
+USER imio
+EXPOSE 8080
+HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
+  CMD nc -z -w5 127.0.0.1 8080 || exit 1
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["console"]
+
