@@ -5,7 +5,7 @@ buildout.cfg:
 bin/buildout: bin/pip buildout.cfg
 	bin/pip install -I -r requirements.txt
 
-buildout: bin/buildout
+buildout: bin/instance
 
 bin/instance: bin/buildout
 	bin/buildout
@@ -37,7 +37,7 @@ migration-sambreville:
 	bin/pip install -I -r requirements.txt
 	bin/buildout -c migration.cfg
 	bin/zeoserver start
-	bin/instance -O plone run scripts/run_portal_upgrades.py
+	xdg-open http://localhost:8080/plone/@@plone-upgrade
 	bin/zeopack
 	bin/zeoserver stop
 	make cleanall
@@ -45,6 +45,6 @@ migration-sambreville:
 	bin/pip install -I -r requirements.txt
 	./bin/buildout -c migration.cfg
 	./bin/zodbupdate --convert-py3 --file=var/filestorage/Data.fs --encoding utf8 --encoding-fallback latin1
-	bin/zodbverify
+	bin/zodbverify -f var/filestorage/Data.fs
 	# rsync -P ivar/filestorage/Data.fs imio@bibliotheca.imio.be:/srv/instances/sambreville/filestorage/Data.fs
 	# rsync -r --info=progress2 var/blobstorage/ imio@bibliotheca.imio.be:/srv/instances/sambreville/blobstorage/
