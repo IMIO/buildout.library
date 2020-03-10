@@ -1,4 +1,7 @@
 #!/usr/bin/make
+
+IMAGE_NAME="docker-staging.imio.be/ideabox/mutual:latest"
+
 buildout.cfg:
 	ln -fs dev.cfg buildout.cfg
 
@@ -16,8 +19,14 @@ bin/pip:
 run: bin/instance
 	bin/instance fg
 
+
+
 docker-image:
 	docker build --pull -t library/mutual:latest .
+
+eggs:  ## Copy eggs from docker image to speed up docker build
+	#-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
+	mkdir -p eggs
 
 cleanall:
 	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
