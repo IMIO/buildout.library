@@ -13,6 +13,7 @@ pipeline {
         stage('Build') {
             agent any
             steps {
+                sh 'make eggs'
                 sh 'make docker-image'
             }
         }
@@ -37,25 +38,11 @@ pipeline {
                 sh "mco shell run 'systemctl restart bibliotheca.service' -I /^staging.imio.be/"
             }
         }
-        stage('Deploy to prod') {
-            agent any
-            when {
-                expression {
-                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
-                }
-            }
-            steps {
-                sh "docker pull docker-staging.imio.be/library/mutual:$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/library/mutual:$BUILD_ID docker-prod.imio.be/library/mutual:$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/library/mutual:$BUILD_ID docker-prod.imio.be/library/mutual:latest"
-                sh "docker push docker-prod.imio.be/library/mutual"
-                sh "docker rmi docker-staging.imio.be/library/mutual:$BUILD_ID"
-                sh "docker rmi docker-prod.imio.be/library/mutual:latest"
-                sh "docker rmi docker-prod.imio.be/library/mutual:$BUILD_ID"
-                sh "mco shell run 'docker pull docker-prod.imio.be/library/mutual:$BUILD_ID' -I /^bibliotheca.imio.be/"
-                sh "mco shell run 'systemctl restart bibliotheca.service' -I /^bibliotheca.imio.be/"
-                sh "mco shell run 'systemctl restart couvin.service' -I /^bibliotheca.imio.be/"
-                sh "mco shell run 'systemctl restart sambreville.service' -I /^bibliotheca.imio.be/"
+    }
+    post {
+        always {
+            node(null)  {
+                sh "rm -rf eggs/"
             }
         }
     }
