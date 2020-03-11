@@ -2,9 +2,6 @@
 
 pipeline {
     agent none
-    triggers {
-        pollSCM('*/3 * * * *')
-    }
     options {
         // Keep the 50 most recent builds
         buildDiscarder(logRotator(numToKeepStr:'30'))
