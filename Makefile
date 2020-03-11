@@ -1,6 +1,6 @@
 #!/usr/bin/make
 
-IMAGE_NAME="docker-staging.imio.be/ideabox/mutual:latest"
+IMAGE_NAME="docker-staging.imio.be/library/mutual:latest"
 MID=bibliotheca
 
 buildout.cfg:
@@ -26,7 +26,7 @@ docker-image:
 	docker build --pull -t library/mutual:latest .
 
 eggs:  ## Copy eggs from docker image to speed up docker build
-	#-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
+	-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
 	mkdir -p eggs
 
 cleanall:
