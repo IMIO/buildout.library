@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 sh "mco shell run 'docker pull docker-staging.imio.be/library/mutual:$BUILD_ID' -I /^staging.imio.be/"
-                sh "mco shell run 'systemctl restart bibliotheca.service' -I /^staging.imio.be/"
+                sh "mco shell run 'systemctl restart website-bibliotheca.service' -I /^staging.imio.be/"
             }
         }
     }
