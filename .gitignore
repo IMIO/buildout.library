@@ -25,3 +25,4 @@ nginx.conf
 rsync.sh
 lib64
 pyvenv.cfg
+eggs/
