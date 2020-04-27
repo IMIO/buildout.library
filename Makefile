@@ -1,7 +1,7 @@
 #!/usr/bin/make
 
 IMAGE_NAME="docker-staging.imio.be/library/mutual:latest"
-MID=bibliotheca
+MID=couvin
 
 buildout.cfg:
 	ln -fs dev.cfg buildout.cfg
@@ -20,8 +20,6 @@ bin/pip:
 run: bin/instance
 	bin/instance fg
 
-
-
 docker-image:
 	docker build --pull -t library/mutual:latest .
 
@@ -30,14 +28,25 @@ eggs:  ## Copy eggs from docker image to speed up docker build
 	mkdir -p eggs
 
 cleanall:
-	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
+	rm -fr develop-eggs downloads eggs parts .installed.cfg lib lib64 include bin .mr.developer.cfg local/
 
 rsync:
-	rsync -P imio@bibliotheca.imio.be:/srv/instances/sambreville/filestorage/Data.fs var/filestorage/Data.fs
-	rsync -r --info=progress2 imio@bibliotheca.imio.be:/srv/instances/sambreville/blobstorage/ var/blobstorage/
+	rsync -P imio@bibliotheca.imio.be:/srv/instances/$(MID)/filestorage/Data.fs var/filestorage/Data.fs
+	rsync -r --info=progress2 imio@bibliotheca.imio.be:/srv/instances/$(MID)/blobstorage/ var/blobstorage/
 
 bash:
 	docker-compose run --rm -p 8080:8080 -u imio instance bash
+
+chown-docker-dev:
+	sudo chown 913:209 -R src/plone.app.contenttypes
+	sudo chown 913:209 -R src/plone.outputfilters
+	sudo chown 913:209 -R var
+
+chown-local-dev:
+	sudo chown $(USER):$(USER) -R src/plone.app.contenttypes
+	sudo chown $(USER):$(USER) -R src/plone.outputfilters
+	sudo chown $(USER):$(USER) -R var
+
 
 migration-start:
 	rm -rf var/filestorage/Data.fs

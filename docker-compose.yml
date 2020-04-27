@@ -7,7 +7,8 @@ services:
     volumes:
       - ./var/blobstorage:/data/blobstorage
       - ./var/filestorage:/data/filestorage
-    command: su-exec imio bin/zeoserver fg
+      - ./src:/plone/src
+    command: bin/zeoserver fg
     expose:
       - 8100
     healthcheck:
@@ -15,17 +16,16 @@ services:
       test: ["CMD", "nc", "-z", "-w5", "127.0.0.1", "8100"]
   instance:
     image: imiolibrary
-    expose:
-      - 8080
+    ports:
+      - 8080:8080
     links:
       - zeo:db
     depends_on:
       - reverseproxy
     volumes:
       - ./var/blobstorage:/data/blobstorage
+      - ./src:/plone/src
     command: fg
-    deploy:
-      replicas: 2
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.instance.rule=Host(`portal.localhost`)'
@@ -45,6 +45,3 @@ services:
       - '8000:8080' # The Web UI (enabled by --api)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
-
-networks:
-  proxy:
