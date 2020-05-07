@@ -46,3 +46,6 @@ chown-local-dev:
 	sudo chown $(USER):$(USER) -R src/plone.app.contenttypes
 	sudo chown $(USER):$(USER) -R src/plone.outputfilters
 	sudo chown $(USER):$(USER) -R var
+
+upgrade-steps:
+	bin/instance -O plone run scripts/run_portal_upgrades.py
