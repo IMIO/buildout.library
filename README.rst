@@ -4,12 +4,10 @@ This buildout is used to build dev and production environment for imio iA.Biblio
 
 dev
 ---
+Run these commands::
 
-```
     make buildout
     ./bin/instance fg
-
-```
 
 prod
 ----
