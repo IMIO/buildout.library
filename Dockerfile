@@ -54,7 +54,10 @@ RUN apk add --no-cache --virtual .run-deps \
   libxml2 \
   libxslt \
   libpng \
-  libjpeg-turbo
+  libjpeg-turbo \
+  lynx \
+  poppler-utils \
+  wv
 
 LABEL plone=$PLONE_VERSION \
   os="alpine" \

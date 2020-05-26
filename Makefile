@@ -38,8 +38,6 @@ bash:
 	docker-compose run --rm -p 8080:8080 -u imio instance bash
 
 chown-docker-dev:
-	sudo chown 913:209 -R src/plone.app.contenttypes
-	sudo chown 913:209 -R src/plone.outputfilters
 	sudo chown 913:209 -R var
 
 chown-local-dev:
