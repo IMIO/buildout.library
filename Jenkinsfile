@@ -1,46 +1,10 @@
 @Library('jenkins-pipeline-scripts') _
 
-pipeline {
-    agent none
-    options {
-        // Keep the 50 most recent builds
-        buildDiscarder(logRotator(numToKeepStr:'30'))
-    }
-    stages {
-        stage('Build') {
-            agent any
-            steps {
-                sh 'make eggs'
-                sh 'make docker-image'
-            }
-        }
-        stage('Push image to registry') {
-            agent any
-            steps {
-                pushImageToRegistry (
-                    env.BUILD_ID,
-                    'library/mutual'
-                )
-            }
-        }
-        stage('Deploy to staging') {
-            agent any
-            when {
-                expression {
-                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
-                }
-            }
-            steps {
-                sh "mco shell run 'docker pull docker-staging.imio.be/library/mutual:$BUILD_ID' -I /^staging.imio.be/"
-                sh "mco shell run 'systemctl restart website-bibliotheca.service' -I /^staging.imio.be/"
-            }
-        }
-    }
-    post {
-        always {
-            node(null)  {
-                sh "rm -rf eggs/"
-            }
-        }
-    }
-}
+dockerDeliveryPipeline (
+  imageName: "library/mutual",
+  productId: "bibliotheca",
+  updateStagingRundeckJobId: "a80f9c0f-b25f-46e1-8f07-497614f70d8c",
+  updateRundeckJobId: "194bda58-e3d5-4fbe-81d7-3e9fbfd8ebad",
+  updateNowRundeckJobId: "609802e6-2631-43d2-908f-88822c0f5ea6",
+  suffixEmail: "support-web",
+)
