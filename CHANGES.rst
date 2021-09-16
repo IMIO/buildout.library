@@ -4,7 +4,7 @@ CHANGELOG
 5.2.3.20-1 (unreleased)
 ---------------------
 
-- library.core 2.0.13
+- library.core 2.0.14
 
   - Add an honeypot field to comment form 
     [boulch]
