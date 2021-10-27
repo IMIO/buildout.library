@@ -1,7 +1,13 @@
 CHANGELOG
 =========
 
-5.2.3-2 (unreleased)
+5.2.3-3 (unreleased)
+--------------------
+
+- Nothing changed yet.
+
+
+5.2.3-2 (2021-10-27)
 --------------------
 
 - Remove useless (since Plone 5.2.2) Products.PloneHotfix20200121 = 1.1
