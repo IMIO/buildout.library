@@ -4,7 +4,9 @@ CHANGELOG
 5.2.3-2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Remove useless (since Plone 5.2.2) Products.PloneHotfix20200121 = 1.1
+  Removing this Hotfix with Plone 5.2.5 fix a char encoging in navigation menu.
+  [boulch]
 
 
 5.2.3-1 (2021-09-16)
