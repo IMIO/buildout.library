@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+5.2.3-4 (unreleased)
+--------------------
+
+- Nothing changed yet.
+
+
+5.2.3-4.dev0 (unreleased)
+-------------------------
+
+- Nothing changed yet.
+
+
 5.2.3-3-quick (2021-10-29)
 --------------------------
 
