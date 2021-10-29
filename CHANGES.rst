@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-5.2.3-3 (unreleased)
---------------------
+5.2.3-3-quick (2021-10-29)
+--------------------------
 
 - Fix rundeck links.
   [bsuttor]
