@@ -3,8 +3,8 @@
 dockerDeliveryPipeline (
   imageName: "library/mutual",
   productId: "bibliotheca",
-  updateStagingRundeckJobId: "a80f9c0f-b25f-46e1-8f07-497614f70d8c",
-  updateRundeckJobId: "194bda58-e3d5-4fbe-81d7-3e9fbfd8ebad",
-  updateNowRundeckJobId: "609802e6-2631-43d2-908f-88822c0f5ea6",
+  updateStagingRundeckJobId: "5a732f06-742d-4b6f-bd4d-91614f81bea6",
+  updateRundeckJobId: "f6aa00f6-ed86-4514-b4fc-913fca49e377",
+  updateNowRundeckJobId: "f6aa00f6-ed86-4514-b4fc-913fca49e377",
   suffixEmail: "support-web",
 )
