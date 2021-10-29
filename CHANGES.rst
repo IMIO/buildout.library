@@ -4,8 +4,8 @@ CHANGELOG
 5.2.3-3 (unreleased)
 --------------------
 
-- Nothing changed yet.
-
+- Fix rundeck links.
+  [bsuttor]
 
 5.2.3-2 (2021-10-27)
 --------------------
