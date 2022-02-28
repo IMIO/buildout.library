@@ -4,13 +4,10 @@ CHANGELOG
 5.2.3-4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 1.1.13
 
-
-5.2.3-4.dev0 (unreleased)
--------------------------
-
-- Nothing changed yet.
+  - Add collective.big.bang dependency
+    [boulch]
 
 
 5.2.3-3-quick (2021-10-29)

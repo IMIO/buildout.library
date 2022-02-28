@@ -25,6 +25,10 @@ services:
     volumes:
       - ./var/blobstorage:/data/blobstorage
       - ./src:/plone/src
+    environment:
+      - PLONE_EXTENSION_IDS=plone.app.caching:default,plonetheme.barceloneta:default,library.policy:default
+      - DEFAULT_LANGUAGE=fr
+      - ACTIVE_BIGBANG=True
     command: fg
     labels:
       - 'traefik.enable=true'
