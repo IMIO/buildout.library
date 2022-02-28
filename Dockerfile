@@ -1,7 +1,7 @@
 FROM imiobe/base:py3-alpine as builder
 ENV PIP=9.0.3 \
   ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.0.1 \
+  SETUPTOOLS=41.2.0 \
   WHEEL=0.31.1 \
   PLONE_MAJOR=5.2 \
   PLONE_VERSION=5.2.1
@@ -34,9 +34,9 @@ FROM imiobe/base:py3-alpine
 
 ENV PIP=9.0.3 \
   ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.0.1 \
+  SETUPTOOLS=41.2.0 \
   WHEEL=0.31.1 \
-  PLONE_VERSION=5.2.1 \
+  PLONE_VERSION=5.2.5 \
   TZ=Europe/Brussel \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
