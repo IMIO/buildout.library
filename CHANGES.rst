@@ -4,6 +4,9 @@ CHANGELOG
 5.2.3-4 (unreleased)
 --------------------
 
+- Update Plone from 5.2.5 to 5.2.8
+  [boulch]
+
 - library.policy 1.1.13
 
   - Add collective.big.bang dependency
