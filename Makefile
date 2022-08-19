@@ -47,3 +47,6 @@ chown-local-dev:
 
 upgrade-steps:
 	bin/instance -O plone run scripts/run_portal_upgrades.py
+
+test:
+	echo "todo"
