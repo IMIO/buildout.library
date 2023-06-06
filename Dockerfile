@@ -1,10 +1,10 @@
 FROM imiobe/base:py3-alpine as builder
-ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.2.0 \
-  WHEEL=0.31.1 \
-  PLONE_MAJOR=5.2 \
-  PLONE_VERSION=5.2.1
+ENV PIP=23.0.1 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=67.6.1 \
+  WHEEL=0.40.0 \
+  PLONE_MAJOR=6.0 \
+  PLONE_VERSION=6.0.4
 
 RUN apk add --update --no-cache --virtual .build-deps \
   build-base \
@@ -32,11 +32,11 @@ RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
 
 FROM imiobe/base:py3-alpine
 
-ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.2.0 \
-  WHEEL=0.31.1 \
-  PLONE_VERSION=5.2.5 \
+ENV PIP=23.0.1 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=67.6.1 \
+  WHEEL=0.40.0 \
+  PLONE_VERSION=6.0.4 \
   TZ=Europe/Brussel \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
@@ -64,11 +64,11 @@ RUN apk add --no-cache --virtual .run-deps \
 LABEL plone=$PLONE_VERSION \
   os="alpine" \
   os.version="3.10" \
-  name="Plone 5.2.1" \
+  name="Plone 6.0.4" \
   description="Plone image for iA.Bibliotheca" \
   maintainer="Imio"
 
-COPY --from=builder /usr/local/lib/python3.8/site-packages /usr/local/lib/python3.8/site-packages
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY --chown=imio --from=builder /plone .
 RUN chown imio:imio /plone
 
