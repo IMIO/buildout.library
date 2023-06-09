@@ -4,6 +4,9 @@ CHANGELOG
 5.2.3-4 (unreleased)
 --------------------
 
+- Update Plone from 5.2.8 to 5.2.12
+  [boulch]
+
 - Update Plone from 5.2.5 to 5.2.8
   [boulch]
 
