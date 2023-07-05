@@ -4,7 +4,15 @@ CHANGELOG
 5.2.3-5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.theme 1.1.7
+
+  - Add css to correctly display new select2 widgets in faceted view "explorer"
+    [boulch, tlambert]
+
+- library.policy 1.1.14
+
+  - Create upgrade step to reimport faceted "explorer" config (Fix select2 widgets)
+    [boulch]
 
 
 5.2.3-4 (2023-06-14)
