@@ -4,7 +4,10 @@ CHANGELOG
 5.2.3-6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 1.1.15
+
+  - MBIBLIWLHA-6 : Change value of Plone.thumb_scale_listing to display bigger picture in library folders views
+    [boulch]
 
 
 5.2.3-5 (2023-07-12)
