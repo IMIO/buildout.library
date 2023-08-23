@@ -4,6 +4,11 @@ CHANGELOG
 5.2.3-6 (unreleased)
 --------------------
 
+- library.policy 1.1.16
+
+  - clear configure_faceted (in upgrades.py). Manually done on each instance due to missing taxonomies
+    [boulch]
+
 - library.policy 1.1.15
 
   - MBIBLIWLHA-6 : Change value of Plone.thumb_scale_listing to display bigger picture in library folders views
