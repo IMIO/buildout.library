@@ -4,6 +4,11 @@ CHANGELOG
 5.2.3-7 (unreleased)
 --------------------
 
+- library.theme 1.1.8
+
+  - BIBLI-65 : Add css to add arrow on select2 widgets
+    [boulch]
+
 - BIBLI-63 : Downgrade collective.z3cform.select2 to 3.0.0b4 to fix double displaying of taxonomy fields
   [boulch]
 
