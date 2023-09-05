@@ -4,7 +4,8 @@ CHANGELOG
 5.2.3-7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- BIBLI-63 : Downgrade collective.z3cform.select2 to 3.0.0b4 to fix double displaying of taxonomy fields
+  [boulch]
 
 
 5.2.3-6 (2023-08-24)
