@@ -79,6 +79,8 @@ EXPOSE 8080
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
   CMD nc -z -w5 127.0.0.1 8080 || exit 1
 
+RUN sed -i 's/ZServer/gunicorn/g' parts/omelette/Products/CMFPlone/controlpanel/browser/overview.py # HACK for overview-controlpanel view
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["console"]
 
