@@ -79,7 +79,7 @@ COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 USER imio
 EXPOSE 8080
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
-  CMD nc -z -w5 127.0.0.1 8080 || exit 1
+  CMD wget -q http://127.0.0.1:8080/ok -O - | grep OK || exit 1
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["console"]
