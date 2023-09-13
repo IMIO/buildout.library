@@ -1,8 +1,9 @@
 FROM imiobe/base:py3-alpine as builder
-ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.8 \
-  SETUPTOOLS=42.0.2 \
-  WHEEL=0.37.1 \
+ENV PIP=20.3.4 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=65.7.0 \
+  SETUPTOOLS_RUST=1.7.0 \
+  WHEEL=0.38.4 \
   PLONE_MAJOR=5.2 \
   PLONE_VERSION=5.2.12
 
@@ -21,21 +22,23 @@ RUN apk add --update --no-cache --virtual .build-deps \
   pcre-dev \
   wget \
   zlib-dev \
-  && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
+  && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL setuptools-rust==$SETUPTOOLS_RUST
 WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
 # COPY --chown=imio eggs /plone/eggs/
 COPY --chown=imio *.cfg /plone/
 COPY --chown=imio scripts /plone/scripts
+COPY --chown=imio templates /plone/templates
 RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
 
 
 FROM imiobe/base:py3-alpine
 
-ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.8 \
-  SETUPTOOLS=42.0.2 \
-  WHEEL=0.37.1 \
+ENV PIP=20.3.4 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=65.7.0 \
+  SETUPTOOLS_RUST=1.7.0 \
+  WHEEL=0.38.4 \
   PLONE_VERSION=5.2.12 \
   TZ=Europe/Brussel \
   ZEO_HOST=zeo \
