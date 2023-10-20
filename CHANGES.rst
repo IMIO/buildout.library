@@ -4,7 +4,18 @@ CHANGELOG
 5.2.3-8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- BIBLI-63 : collective.z3cform.select2 3.0.0b8
+
+  - Fix duplicate taxonomy select2 fields
+    [laulaz]
+
+- BIBLI-67 : collective.z3cform.select2 3.0.0b7
+
+  - Fix selected URL values display in faceted select2 widget
+    [laulaz]
+
+  - Fix "current filters" faceted widget when used with multi-select2
+    [laulaz]
 
 
 5.2.3-7 (2023-09-05)
