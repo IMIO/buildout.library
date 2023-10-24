@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-5.2.3-8 (unreleased)
+5.2.3-8 (2023-10-24)
 --------------------
 
 - BIBLI-63 : collective.z3cform.select2 3.0.0b8
