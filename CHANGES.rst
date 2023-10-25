@@ -4,7 +4,10 @@ CHANGELOG
 5.2.3-9 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- BIBLI-67 : collective.z3cform.select2 3.0.0b9
+
+  - Fix "current filters" removing when used with multi-select2
+    [laulaz]
 
 
 5.2.3-8 (2023-10-24)
