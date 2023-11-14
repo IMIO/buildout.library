@@ -4,6 +4,9 @@ CHANGELOG
 5.2.3-9 (unreleased)
 --------------------
 
+- Update Plone from 5.2.12 to 5.2.14
+  [boulch]
+
 - BIBLI-67 : collective.z3cform.select2 3.0.0b9
 
   - Fix "current filters" removing when used with multi-select2

@@ -1,10 +1,10 @@
 FROM imiobe/base:py3-alpine as builder
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.8 \
-  SETUPTOOLS=42.0.2 \
-  WHEEL=0.37.1 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=65.7.0 \
+  WHEEL=0.38.4 \
   PLONE_MAJOR=5.2 \
-  PLONE_VERSION=5.2.12
+  PLONE_VERSION=5.2.14
 
 RUN apk add --update --no-cache --virtual .build-deps \
   build-base \
@@ -33,10 +33,10 @@ RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
 FROM imiobe/base:py3-alpine
 
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.8 \
-  SETUPTOOLS=42.0.2 \
-  WHEEL=0.37.1 \
-  PLONE_VERSION=5.2.12 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=65.7.0 \
+  WHEEL=0.38.4 \
+  PLONE_VERSION=5.2.14 \
   TZ=Europe/Brussel \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
@@ -64,7 +64,7 @@ RUN apk add --no-cache --virtual .run-deps \
 LABEL plone=$PLONE_VERSION \
   os="alpine" \
   os.version="3.10" \
-  name="Plone 5.2.12" \
+  name="Plone 5.2.14" \
   description="Plone image for iA.Bibliotheca" \
   maintainer="Imio"
 
