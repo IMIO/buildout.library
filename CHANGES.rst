@@ -4,7 +4,10 @@ CHANGELOG
 5.2.3-10 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- library.core 2.0.15
+
+  - MBIBLIHAVA-3 : Fix "Impossible to add/save existing content tile" (view_template field : required must be False) issue : plone/plone.app.standardtiles#149
+    [boulch]
 
 
 5.2.3-9 (2023-11-21)
