@@ -26,3 +26,4 @@ rsync.sh
 lib64
 pyvenv.cfg
 eggs/
+.vscode
