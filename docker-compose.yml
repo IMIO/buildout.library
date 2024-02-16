@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3'
 services:
   zeo:
     build:
@@ -33,14 +33,17 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.instance.rule=Host(`portal.localhost`)'
+      - 'traefik.http.routers.instance.entrypoints=web'
       - 'traefik.http.services.instance.loadbalancer.server.port=8080'
       - "traefik.http.routers.instance.middlewares=add-plone"
-      - "traefik.http.middlewares.add-plone.addprefix.prefix=/VirtualHostBase/http/portal.localhost/Plone/VirtualHostRoot"
+      - "traefik.http.middlewares.add-plone.addprefix.prefix=/VirtualHostBase/http/portal.localhost/plone/VirtualHostRoot"
+
   reverseproxy:
     image: traefik
     command:
       - '--api.insecure=true'
       - '--providers.docker=true'
+      - '--entryPoints.web.address=:80'
     ports:
       - '80:80' # The HTTP port
       - '8000:8080' # The Web UI (enabled by --api)
