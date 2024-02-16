@@ -1,10 +1,11 @@
 CHANGELOG
 =========
 
-5.2.3-11 (unreleased)
+6.0.9-1 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Update to Plone 6.0.9
+  [bsuttor]
 
 
 5.2.3-10 (2023-12-15)
