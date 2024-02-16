@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 FROM harbor.imio.be/common/plone-base:6.0.9 as builder
 LABEL maintainer="Benoît Suttor <benoit.suttor@imio.be>"
 ENV PIP=23.3.1 \
@@ -6,6 +7,16 @@ ENV PIP=23.3.1 \
   WHEEL=0.42.0 \
   PLONE_MAJOR=6.0 \
   PLONE_VERSION=6.0.9
+=======
+FROM imiobe/base:py3-ubuntu-20.04 as builder
+LABEL maintainer="Benoît Suttor <benoit.suttor@imio.be>"
+ENV PIP=23.0.1 \
+  ZC_BUILDOUT=3.0.1 \
+  SETUPTOOLS=67.6.1 \
+  WHEEL=0.40.0 \
+  PLONE_MAJOR=5.2 \
+  PLONE_VERSION=5.2.14
+>>>>>>> main
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -31,7 +42,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && pip3 install --no-cache-dir pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT py-spy
 
 WORKDIR /plone
-
 COPY --chown=imio *.cfg /plone/
 COPY --chown=imio scripts /plone/scripts
 RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio

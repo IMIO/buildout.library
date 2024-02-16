@@ -20,9 +20,6 @@ CHANGELOG
 5.2.3-9 (2023-11-21)
 --------------------
 
-- Update to Plone 6.0.4
-  [boulch]
-
 - Update Plone from 5.2.5 to 5.2.8
   [boulch]
 
