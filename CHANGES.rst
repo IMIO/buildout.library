@@ -4,6 +4,9 @@ CHANGELOG
 5.2.3-11 (unreleased)
 ---------------------
 
+- Update collective.plausible to 1.0a3
+    [remdub]
+
 - library.policy 1.1.17
 
   - WEB-4074 : Install collective.plausible
