@@ -30,7 +30,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   zlib1g-dev \
   && pip3 install --no-cache-dir pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT py-spy
 
-WORKDIR /plone
+# TEMPORARY fix
+RUN mkdir -p /plone/eggs && \
+  wget -O- https://eggs.imio.be/cp38/plone.patternslib-1.2.0.2.tar.gz | tar zxv -C /plone/eggs && \
+  wget -O- https://eggs.imio.be/cp38/plone.formwidget.geolocation-2.2.2.1.tar.gz | tar zxv -C /plone/eggs
+
+  WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
 
 # COPY --chown=imio eggs /plone/eggs/
