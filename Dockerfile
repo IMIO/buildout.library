@@ -1,4 +1,4 @@
-FROM imiobe/base:py3-ubuntu-20.04 as builder
+FROM harbor.imio.be/common/base:py3-ubuntu-20.04 as builder
 LABEL maintainer="Benoît Suttor <benoit.suttor@imio.be>"
 ENV PIP=23.0.1 \
   ZC_BUILDOUT=3.0.1 \
