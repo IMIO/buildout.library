@@ -17,7 +17,7 @@ jobs:
           DOCKERFILE: ${{ vars.DOCKERFILE_DEV }}
           IMAGE_NAME: ${{ vars.IMAGE_NAME }}
           IMAGE_TAGS: |
-            ${{ vars.IMAGE_TAG_DEV }}
+             ${{ secrets.HARBOR_URL }}/${{ vars.IMAGE_NAME }}:${{ vars.IMAGE_TAG_DEV }}
           REGISTRY_URL: ${{ secrets.HARBOR_URL }}
           REGISTRY_USERNAME: ${{ secrets.SMARTWEB_HARBOR_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.SMARTWEB_HARBOR_PASSWORD }}
