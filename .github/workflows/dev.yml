@@ -14,7 +14,6 @@ jobs:
       - name: Build push and notify
         uses: IMIO/gha/build-push-notify@v3.9.3
         with:
-          DOCKERFILE: ${{ vars.DOCKERFILE_DEV }}
           IMAGE_NAME: ${{ vars.IMAGE_NAME }}
           IMAGE_TAGS: |
              ${{ secrets.HARBOR_URL }}/${{ vars.IMAGE_NAME }}:${{ vars.IMAGE_TAG_DEV }}
