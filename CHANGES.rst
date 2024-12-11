@@ -4,6 +4,30 @@ CHANGELOG
 6.0.9-1 (unreleased)
 ---------------------
 
+- library.core 2.1.1
+
+  - BIBLI-73 : Add monkeypatch to fix TTW resource calling
+    [boulch]
+
+- library.core 2.1.0
+
+  - BIBLI-73 : Update to Plone6 (6.0.9)
+    [boulch]
+
+- library.policy 2.0.0
+
+  - BIBLI-73 : Update to Plone6 (6.0.9)
+    [boulch]
+
+  - BIBLI-73 : Change default faceted view for "explorer" folders
+    [boulch]
+
+  - Migrate to Plone 6. Next steps!
+    [boulch]
+
+  - Migration to Plone6
+    [boulch]
+
 - Update to Plone 6.0.9
   [bsuttor]
 
