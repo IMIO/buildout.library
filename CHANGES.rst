@@ -4,6 +4,11 @@ CHANGELOG
 6.0.9-1 (unreleased)
 ---------------------
 
+- library.policy 2.0.1
+
+  - BIBLI-73 : Let deprecated old library.theme. Need to be uninstall manually TTW.
+    [boulch]
+
 - Get released versions of library.policy and library.core for production
   [boulch]
 
