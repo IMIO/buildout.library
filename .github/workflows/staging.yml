@@ -1,8 +1,10 @@
-name: Publish and deploy dev image
+name: Publish and deploy staging image
 on:
   push:
     branches:
-      - dev
+      - main
+    tags:
+      - '!**'
   workflow_dispatch:
 jobs:
   build-push:
@@ -11,11 +13,10 @@ jobs:
     if: contains(github.event.head_commit.message, 'Back to development:') == false && contains(github.event.head_commit.message, 'Preparing release') == false
     steps:
       - name: Build push and notify
-        uses: IMIO/gha/build-push-notify@v3.9.3
+        uses: IMIO/gha/build-push-notify@v1.0.1
         with:
           IMAGE_NAME: ${{ vars.IMAGE_NAME }}
-          IMAGE_TAGS: |
-             ${{ secrets.HARBOR_URL }}/${{ vars.IMAGE_NAME }}:${{ vars.IMAGE_TAG_DEV }}
+          IMAGE_TAG: ${{ vars.IMAGE_TAG_STAGING }}
           REGISTRY_URL: ${{ secrets.HARBOR_URL }}
           REGISTRY_USERNAME: ${{ secrets.SMARTWEB_HARBOR_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.SMARTWEB_HARBOR_PASSWORD }}
@@ -32,5 +33,5 @@ jobs:
           RUNDECK_URL: ${{ secrets.RUNDECK_URL }}
           RUNDECK_TOKEN: ${{ secrets.SMARTWEB_RUNDECK_TOKEN }}
           RUNDECK_JOB_ID: ${{ vars.RUNDECK_JOB_ID }}
-          RUNDECK_PARAMETERS: '-F "filter=name ${{ vars.NODE_NAME }}" -F "option.tag=${{ vars.IMAGE_TAG_DEV }}" -F "option.image_name=${{ vars.IMAGE_NAME }}"'
+          RUNDECK_PARAMETERS: '-F "filter=name ${{ vars.NODE_NAME }}" -F "option.tag=${{ vars.IMAGE_TAG_STAGING }}" -F "option.image_name=${{ vars.IMAGE_NAME }}"'
           MATTERMOST_WEBHOOK_URL: ${{ secrets.SMARTWEB_MATTERMOST_WEBHOOK_URL }}

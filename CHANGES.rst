@@ -4,7 +4,6 @@ CHANGELOG
 6.0.9-1 (unreleased)
 ---------------------
 
-
 - library.core 2.1.2
   
   - BIBLI-73 : Fix js for map
@@ -37,6 +36,13 @@ CHANGELOG
 - Update to Plone 6.0.9
   [bsuttor]
 
+- Update collective.plausible to 1.0a3
+  [remdub]
+
+- library.policy 1.1.17
+
+  - WEB-4074 : Install collective.plausible
+    [remdub]
 
 5.2.3-10 (2023-12-15)
 ---------------------
