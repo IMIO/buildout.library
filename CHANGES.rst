@@ -4,6 +4,9 @@ CHANGELOG
 6.0.9-1 (unreleased)
 ---------------------
 
+- Get released versions of library.policy and library.core for production
+  [boulch]
+
 - library.core 2.1.2
   
   - BIBLI-73 : Fix js for map
