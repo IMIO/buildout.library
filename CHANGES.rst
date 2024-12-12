@@ -4,6 +4,12 @@ CHANGELOG
 6.0.9-1 (unreleased)
 ---------------------
 
+
+- library.core 2.1.2
+  
+  - BIBLI-73 : Fix js for map
+    [boulch, tlambert, laulaz]
+
 - library.core 2.1.1
 
   - BIBLI-73 : Add monkeypatch to fix TTW resource calling
