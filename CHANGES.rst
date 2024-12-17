@@ -4,7 +4,8 @@ CHANGELOG
 6.0.9-2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Update waitress 3.0.2
+  [remdub]
 
 
 6.0.9-1 (2024-12-16)
@@ -19,7 +20,7 @@ CHANGELOG
   [boulch]
 
 - library.core 2.1.2
-  
+
   - BIBLI-73 : Fix js for map
     [boulch, tlambert, laulaz]
 
