@@ -4,8 +4,7 @@ CHANGELOG
 6.0.9-2 (unreleased)
 --------------------
 
-- gunicorn as wsgi server
-  [remdub]
+- Nothing changed yet.
 
 
 6.0.9-1 (2024-12-16)
