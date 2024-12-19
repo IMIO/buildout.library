@@ -4,7 +4,10 @@ CHANGELOG
 6.0.9-3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.core 2.1.3
+
+  - Remove picture from comments. That don't work!
+    [boulch]
 
 
 6.0.9-2 (2024-12-17)
@@ -64,6 +67,7 @@ CHANGELOG
 
   - WEB-4074 : Install collective.plausible
     [remdub]
+
 
 5.2.3-10 (2023-12-15)
 ---------------------
