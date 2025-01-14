@@ -4,6 +4,11 @@ CHANGELOG
 6.0.9-3 (unreleased)
 --------------------
 
+- library.policy 2.0.2
+
+  - Reinstall collective.behavior.gallery
+    [boulch]
+
 - library.core 2.1.3
 
   - Remove picture from comments. That don't work!
