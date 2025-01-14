@@ -4,6 +4,11 @@ CHANGELOG
 6.0.9-3 (unreleased)
 --------------------
 
+- library.core 2.1.5
+
+  - BIBLI-75 : Ignore displaying each items if not necessary to display it when rendering a "patrimoine" content
+    [boulch]
+
 - library.core 2.1.4
 
   - BIBLI-75 : Ignore displaying some items when rendering a "patrimoine" content
