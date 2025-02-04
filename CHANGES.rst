@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-6.0.9-4 (unreleased)
+6.0.9-4 (2025-02-04)
 --------------------
 
 - BIBLI-76 : Update plone.app.discussion from 4.0.2 to 4.1.2 (Fix recaptcha validation)
