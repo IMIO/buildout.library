@@ -4,7 +4,8 @@ CHANGELOG
 6.0.9-5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Update to Plone 6.0.14
+  [boulch]
 
 
 6.0.9-4 (2025-02-04)
