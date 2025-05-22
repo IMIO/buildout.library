@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   wget \
   zlib1g-dev \
-  && pip3 install --no-cache-dir pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT py-spy
+  && pip3 install --no-cache-dir pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT py-spy --break-system-packages
 
 WORKDIR /plone
 COPY --chown=imio *.cfg /plone/
@@ -59,22 +59,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libmemcached11 \
   libopenjp2-7 \
   libpq5 \
-  libtiff5 \
+  libtiff5-dev \
   libxml2 \
   libxslt1.1 \
   lynx \
-  netcat \
   poppler-utils \
-  python3-distutils \
   rsync \
   wget \
   wv \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 RUN curl -L https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_amd64.deb > /tmp/dumb-init.deb && dpkg -i /tmp/dumb-init.deb && rm /tmp/dumb-init.deb
-# COPY --from=builder /usr/local/bin/py-spy /usr/local/bin/py-spy
+COPY --from=builder /usr/local/bin/py-spy /usr/local/bin/py-spy
 COPY --chown=imio --from=builder /plone .
-COPY --from=builder /usr/local/lib/python3.10/dist-packages /usr/local/lib/python3.10/dist-packages
+COPY --from=builder /usr/local/lib/python3.12/dist-packages /usr/local/lib/python3.12/dist-packages
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 
 USER imio
