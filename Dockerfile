@@ -1,8 +1,8 @@
-FROM harbor.imio.be/common/plone-base:6.0.9 as builder
+FROM harbor.imio.be/common/plone-base:6.0.14 as builder
 LABEL maintainer="Benoît Suttor <benoit.suttor@imio.be>"
-ENV PIP=24.3.1 \
-  ZC_BUILDOUT=3.3 \
-  SETUPTOOLS=75.6.0 \
+ENV PIP=25.0.1 \
+  ZC_BUILDOUT=4.1.4 \
+  SETUPTOOLS=75.8.2 \
   WHEEL=0.45.1 \
   PLONE_MAJOR=6.0 \
   PLONE_VERSION=6.0.14
@@ -36,10 +36,10 @@ COPY --chown=imio scripts /plone/scripts
 RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
 
 
-FROM harbor.imio.be/common/plone-base:6.0.9
-ENV PIP=24.3.1 \
-  ZC_BUILDOUT=3.3 \
-  SETUPTOOLS=75.6.0 \
+FROM harbor.imio.be/common/plone-base:6.0.14
+ENV PIP=25.0.1 \
+  ZC_BUILDOUT=4.1.4 \
+  SETUPTOOLS=75.8.2 \
   WHEEL=0.45.1 \
   PLONE_MAJOR=6.0 \
   PLONE_VERSION=6.0.14 \
