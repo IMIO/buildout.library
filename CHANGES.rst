@@ -4,6 +4,11 @@ CHANGELOG
 6.0.9-5 (unreleased)
 --------------------
 
+- library.policy 2.0.3
+
+  - BIBLIBDC-125 : Set "banner" (instead of "preview") as default scale for collective.behavior.banner "banner_scale" [boulch]
+    [boulch]
+
 - Update to Plone 6.0.14
   [boulch]
 
