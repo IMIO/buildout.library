@@ -4,7 +4,10 @@ CHANGELOG
 6.0.9-6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.core 2.1.6
+
+  - Fix collective.behavior.gallery.behaviors.folderish_gallery interface for patrimoine
+    [boulch]
 
 
 6.0.9-5 (2025-05-26)
