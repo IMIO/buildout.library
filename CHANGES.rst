@@ -4,7 +4,13 @@ CHANGELOG
 6.0.9-7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 2.0.4
+
+  - Uninstall obsolete `library.theme` (it will later be removed)
+    [boulch, laulaz]
+
+  - Ensure unused `plone.patternslib` is not installed as it causes errors
+    [boulch, laulaz]
 
 
 6.0.9-6 (2025-06-18)
