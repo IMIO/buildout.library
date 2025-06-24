@@ -4,7 +4,14 @@ CHANGELOG
 6.0.9-8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 2.0.5
+
+  - Remove obsolete `library.theme` completely
+    All themes reside in https://github.com/IMIO/imio_library_themes/
+    [laulaz]
+
+  - Move viewlets registrations from obsolete `library.theme` to `library.policy`
+    [laulaz]
 
 
 6.0.9-7 (2025-06-23)
