@@ -4,7 +4,10 @@ CHANGELOG
 6.0.9-9 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 2.0.6
+  
+  - BIBLI-81 : Improve installation (Faceted, Taxonomies)
+    [boulch]
 
 
 6.0.9-8 (2025-06-24)
