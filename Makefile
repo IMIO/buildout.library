@@ -1,54 +1,48 @@
-#!/usr/bin/make
-all: buildout
+VENV_FOLDER=.venv
 
-IMAGE_NAME="harbor.imio.be/web/library/mutual:latest"
-MID=couvin
+ifeq (, $(shell which uv ))
+  $(error "[ERROR] The 'uv' command is missing from your PATH. Install it from: https://docs.astral.sh/uv/getting-started/installation/")
+endif
+
+.PHONY: help
+help: ## Display this help message
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: install
+install: $(VENV_FOLDER)/bin/buildout .git/hooks/pre-commit ## Install development environment
+	$(VENV_FOLDER)/bin/buildout
+
+.PHONY: start
+start: bin/instance .git/hooks/pre-commit ## Start the instance
+	bin/instance fg
+
+.PHONY: cleanall
+cleanall: ## Clean development environment
+	rm -fr .git/hooks/pre-commit .installed.cfg .mr.developer.cfg .venv bin buildout.cfg develop-eggs downloads eggs include lib lib64 local parts pyvenv.cfg
+
+.PHONY: upgrade-steps
+upgrade-steps: ## Run upgrade steps
+	bin/instance -O Plone run scripts/run_portal_upgrades.py
+
+.PHONY: lint
+lint: ## Run pre-commit hooks
+	uvx pre-commit run --all
+
+.venv:
+	@echo "Creating virtual environment with uv"
+	uv venv
 
 buildout.cfg:
 	ln -fs dev.cfg buildout.cfg
 
-bin/buildout: bin/pip buildout.cfg
-	bin/uv pip install -r requirements.txt
+$(VENV_FOLDER)/bin/buildout: .venv buildout.cfg
+	@echo "Installing requirements with uv pip interface"
+	uv pip install -r requirements.txt
 
-buildout: bin/instance
+bin/instance: $(VENV_FOLDER)/bin/buildout
+	@echo "Bootstrapping environment with buildout"
+	$(VENV_FOLDER)/bin/buildout
 
-bin/instance: bin/buildout
-	bin/buildout
-
-bin/pip:
-	python3.10 -m venv .
-	bin/pip install uv
-
-run: bin/instance
-	bin/instance fg
-
-docker-image:
-	docker build --pull -t library/mutual:latest .
-
-eggs:  ## Copy eggs from docker image to speed up docker build
-	-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
-	mkdir -p eggs
-
-cleanall:
-	rm -fr develop-eggs downloads eggs parts .installed.cfg lib lib64 include bin .mr.developer.cfg local/
-
-rsync:
-	rsync -P imio@bibliotheca.imio.be:/srv/instances/$(MID)/filestorage/Data.fs var/filestorage/Data.fs
-	rsync -r --info=progress2 imio@bibliotheca.imio.be:/srv/instances/$(MID)/blobstorage/ var/blobstorage/
-
-bash:
-	docker-compose run --rm -p 8080:8080 -u imio instance bash
-
-chown-docker-dev:
-	sudo chown 913:209 -R var
-
-chown-local-dev:
-	sudo chown $(USER):$(USER) -R src/plone.app.contenttypes
-	sudo chown $(USER):$(USER) -R src/plone.outputfilters
-	sudo chown $(USER):$(USER) -R var
-
-upgrade-steps:
-	bin/instance -O plone run scripts/run_portal_upgrades.py
-
-test-image:
-	echo "todo"
+.git/hooks/pre-commit: .venv
+	@echo "Installing pre-commit hooks"
+	uvx pre-commit install
