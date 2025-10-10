@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-6.0.9-10 (unreleased)
+6.0.9-10 (2025-10-10)
 ---------------------
 
 - Demo for PyCon Finland 2025.
