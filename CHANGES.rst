@@ -4,7 +4,8 @@ CHANGELOG
 6.0.9-10 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Demo for PyCon Finland 2025.
+  [bsuttor, remdub]
 
 
 6.0.9-9 (2025-07-01)
