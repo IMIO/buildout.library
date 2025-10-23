@@ -4,7 +4,8 @@ CHANGELOG
 6.0.9-10 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Migrate to Plone 6.1.3
+  [boulch]
 
 
 6.0.9-9 (2025-07-01)
