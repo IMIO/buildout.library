@@ -4,6 +4,10 @@ CHANGELOG
 6.0.9-11 (unreleased)
 ---------------------
 
+- library.core 2.1.7
+    - BIBLIBDC-134 : Fix select2 display taxonomy term identifier instead of term label
+      [boulch]
+
 - Migrate to Plone 6.1.3
   [boulch]
 
