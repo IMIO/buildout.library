@@ -4,6 +4,9 @@ CHANGELOG
 6.0.9-11 (unreleased)
 ---------------------
 
+- collective.upgrade in auto-checkout
+  [remdub]
+
 - library.core 2.1.7
     - BIBLIBDC-134 : Fix select2 display taxonomy term identifier instead of term label
       [boulch]
