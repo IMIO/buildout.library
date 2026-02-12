@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-6.0.9-11 (unreleased)
----------------------
+6.1.0-1 (2026-02-12)
+--------------------
 
 - Upgrade plone.app.upgrade to 3.3.1
     - Fix upgrading TinyMCE plugins with invalid/outdated plugins. @petschki (#351)
