@@ -4,6 +4,10 @@ CHANGELOG
 6.0.9-11 (unreleased)
 ---------------------
 
+- Upgrade plone.app.upgrade to 3.3.1
+    - Fix upgrading TinyMCE plugins with invalid/outdated plugins. @petschki (#351)
+  [boulch]
+
 - collective.upgrade in auto-checkout
   [remdub]
 
