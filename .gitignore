@@ -30,3 +30,4 @@ eggs/
 .lock
 .DS_Store
 resources/
+.env

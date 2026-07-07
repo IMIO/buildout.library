@@ -4,6 +4,18 @@ CHANGELOG
 6.1.0-3 (unreleased)
 --------------------
 
+- library.core 2.1.8
+
+  - Use plone.app.discussion.behaviors.IAllowDiscussion
+    plone.app.dexterity.behaviors.discussion.IAllowDiscussion has been deprecated
+    [remdub]
+
+  - Migrate dev environment to Plone 6.1.5 and buildout 5
+    [remdub]
+
+  - Migrate to Plone 6.1.4
+    [boulch]
+
 - Migrate to Plone 6.1.5
   [remdub]
 
@@ -26,6 +38,7 @@ CHANGELOG
   [remdub]
 
 - library.core 2.1.7
+
     - BIBLIBDC-134 : Fix select2 display taxonomy term identifier instead of term label
       [boulch]
 
@@ -44,7 +57,7 @@ CHANGELOG
 --------------------
 
 - library.policy 2.0.6
-  
+
   - BIBLI-81 : Improve installation (Faceted, Taxonomies)
     [boulch]
 
