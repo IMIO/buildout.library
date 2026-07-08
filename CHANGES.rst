@@ -4,7 +4,8 @@ CHANGELOG
 6.1.0-4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Remove obsolete references to library.theme in buildout files
+  [remdub]
 
 
 6.1.0-3 (2026-07-07)
