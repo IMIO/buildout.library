@@ -4,6 +4,19 @@ CHANGELOG
 6.1.0-4 (unreleased)
 --------------------
 
+- library.core 3.0.0
+
+  - Switch to PEP 420 native namespace package.
+    [remdub]
+
+- library.policy 3.0.0
+
+  - Switch to PEP 420 native namespace package.
+    [remdub]
+
+  - Migrate dev environment to Plone 6.1.5, buildout 5
+    [remdub]
+
 - Remove obsolete references to library.theme in buildout files
   [remdub]
 
