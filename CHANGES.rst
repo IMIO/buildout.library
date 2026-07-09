@@ -4,7 +4,13 @@ CHANGELOG
 6.1.0-5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- library.policy 3.1.0
+
+  - KEYC-132 : Set the modal property on the login action (portal_actions/user/login) at install and via an upgrade step
+    [remdub]
+
+  - KEYC-132 : Install pas.plugins.kimug by default and add an upgrade step to install it on existing sites
+    [remdub]
 
 
 6.1.0-4 (2026-07-08)
