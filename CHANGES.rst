@@ -4,7 +4,10 @@ CHANGELOG
 6.1.0-6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- pas.plugins.kimug 1.9.4
+
+  - KEYC-132 : Use a lightweight endpoint for realm_exists method
+    [remdub]
 
 
 6.1.0-5 (2026-07-12)
