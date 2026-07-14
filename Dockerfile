@@ -1,4 +1,4 @@
-FROM harbor.imio.be/common/plone-base:6.1.5-buildout5 as builder
+FROM harbor.imio.be/common/plone-base:6.1.5-buildout5 AS builder
 LABEL maintainer="Benoît Suttor <benoit.suttor@imio.be>"
 ENV PIP=26.1.2 \
   ZC_BUILDOUT=5.2.0 \
