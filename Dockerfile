@@ -46,8 +46,8 @@ ENV PIP=26.1.2 \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
   HOSTNAME_HOST=local \
-  PROJECT_ID=library \
-  PLONE_EXTENSION_IDS=plone.app.caching:default,plonetheme.barceloneta:default,library.policy:default \
+  PROJECT_ID=bibliotheca \
+  PLONE_EXTENSION_IDS=plone.app.caching:default,plonetheme.barceloneta:default,bibliotheca.policy:default \
   DEFAULT_LANGUAGE=fr
 
 VOLUME /data/blobstorage

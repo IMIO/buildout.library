@@ -3,7 +3,7 @@ services:
   zeo:
     build:
       context: .
-    image: imiolibrary
+    image: imiobibliotheca
     volumes:
       - ./var/blobstorage:/data/blobstorage
       - ./var/filestorage:/data/filestorage
@@ -15,7 +15,7 @@ services:
       # test: ["CMD-SHELL", "nc", "-z", "w5", "127.0.0.1", "8100", "||", "exit", "1"]
       test: ["CMD", "nc", "-z", "-w5", "127.0.0.1", "8100"]
   instance:
-    image: imiolibrary
+    image: imiobibliotheca
     ports:
       - 8080:8080
     links:
@@ -26,7 +26,7 @@ services:
       - ./var/blobstorage:/data/blobstorage
       - ./src:/plone/src
     environment:
-      - PLONE_EXTENSION_IDS=plone.app.caching:default,plonetheme.barceloneta:default,library.policy:default
+      - PLONE_EXTENSION_IDS=plone.app.caching:default,plonetheme.barceloneta:default,bibliotheca.policy:default
       - DEFAULT_LANGUAGE=fr
       - ACTIVE_BIGBANG=True
     command: fg

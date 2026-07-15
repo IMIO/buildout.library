@@ -1,6 +1,6 @@
-Buildout Library
-================
-This buildout is used to build dev and production environment for imio iA.Bibliohteca app.
+Buildout Bibliotheca
+====================
+This buildout is used to build dev and production environment for imio iA.Bibliotheca app.
 
 dev
 ---
