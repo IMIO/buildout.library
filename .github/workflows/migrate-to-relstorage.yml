@@ -78,5 +78,5 @@ jobs:
           RUNDECK_URL: ${{ secrets.RUNDECK_URL }}
           RUNDECK_TOKEN: ${{ secrets.SMARTWEB_RUNDECK_TOKEN }}
           RUNDECK_JOB_ID: ${{ vars.RUNDECK_JOB_ID }}
-          RUNDECK_PARAMETERS: '-F "filter=name ${{ vars.NODE_NAME }}" -F "option.tag=${{ vars.IMAGE_TAG_STAGING }}" -F "option.image_name=${{ vars.IMAGE_NAME }}"'
+          RUNDECK_PARAMETERS: '-F "filter=name ${{ vars.NODE_NAME }}" -F "option.tag=migrate-to-relstorage" -F "option.image_name=${{ vars.IMAGE_NAME }}"'
           MATTERMOST_WEBHOOK_URL: ${{ secrets.SMARTWEB_MATTERMOST_WEBHOOK_URL }}
