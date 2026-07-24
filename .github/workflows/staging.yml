@@ -7,7 +7,7 @@ on:
       - '!**'
   workflow_dispatch:
 env:
-  IMAGE_NAME: 'web/library/mutual'
+  IMAGE_NAME: 'web/bibliotheca/mutual'
   REGISTRY_URL: ${{ secrets.HARBOR_URL }}
 
 permissions:
