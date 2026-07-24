@@ -4,7 +4,12 @@ CHANGELOG
 6.1.0-7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add ``scripts/`` helpers to repair items created before the
+  ``library.*`` -> ``bibliotheca.*`` rename: ``fix_rename.py`` (rewrite stale
+  FTI schema strings, purge orphaned browser layers, register the renamed
+  layers) and ``realign_profiles.py`` (re-align GenericSetup profile versions).
+  Run with ``bin/instance run scripts/<name>.py``.
+  [remdub]
 
 
 6.1.0-6 (2026-07-13)
